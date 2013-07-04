@@ -2,10 +2,19 @@ from django.db.models import *
 
 class Person(Model):
 	name = CharField(max_length=20)
-	surname = CharField(max_length=50)
+	last_name = CharField(max_length=50)
 	birth_date = DateField()
 	bio = TextField()
-	contacts = TextField()
 	
 	def __unicode__(self):
 		return u'%s %s' % (self.name, self.surname)
+
+class Contacts(Model):
+	person = ForeignKey(Person)
+	email = EmailField(max_length=75)
+	jabber = EmailField(max_length=75)
+	skype = CharField(max_length=50)
+	other = TextField() 
+	
+	def __unicode__(self):
+		return self.email
