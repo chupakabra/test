@@ -1,37 +1,29 @@
-"""
-This file demonstrates writing tests using the unittest module. These will pass
-when you run "manage.py test".
-
-Replace this with more appropriate tests for your application.
-"""
-
+from django.core.urlresolvers import reverse
 from django.test import TestCase
-from gen_info import *
-from gen_info.models import Person
+from gen_info.models import *
 
 class PersonViewTests(TestCase):
 	
-	"""If no information about person Error 404 should be displayed"""
-	def test_main_view_no_info(self):
+	"""If no information about person or its contacts Error 404 should be displayed"""
+	def test_main_view_no_person_info(self):
 		response = self.client.get(reverse('main'))
 		self.assertEqual(response.status_code, 404)
 		self.assertQuerysetEqual(response.context['person'], [])
+		self.assertQuerysetEqual(response.context['contacts'], [])
 	
-	"""Checking context of 'person' at all"""
-	def test_main_view_person_context(self):
-		json_text = "[{\"pk\": 1, \"model\": \"gen_info.person\", \"fields\":{\"name\": \"Name\", \"surname\": \"Surname\", \"Birth date\": \"dd.mm.yyyy\", \"bio\": {\"Birth place\": \"Some place\", \"Education\": \"Some education\", \"Work experience\": \"Some experience\"}, \"contacts\": {\"E-mail\": \"someone@gmail.com\",\"Telephone\": \"+38(098)xxxxxxx\"}}}]"
+	"""Context checking"""
+	def test_main_view_person_context_without_contacts(self):
+		person = Person.objects.create(name="Name", last_name="Last_Name")
+		contacts = Person.contacts_set.create(e_mail="example@com.ua")
 		response = self.client.get(reverse('main'))
 		self.assertEqual(response.status_code, 200)
 		self.assertQuerysetEqual(
             response.context['person'],
-            ['<Person: Name Surname>'],
+            ['<Person: Name Last_Name>']
         )
-        self.assertQuerysetEqual(
-            response.context['bio_dict'],
-            ['<Person: {Birth place: Some place, Education: Some education, Work experience: Some experience}'],
+		self.assertQuerysetEqual(
+            response.context['contacts'],
+            ['<Contacts: example@com.ua>']
         )
-        self.assertQuerysetEqual(
-            response.context['contacts_dict'],
-            ['<Person: {E-mail: someone@gmail.com, Telephone: +38(098)xxxxxxx}'],
-        )
+
 

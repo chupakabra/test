@@ -7,7 +7,7 @@ class Person(Model):
 	bio = TextField()
 	
 	def __unicode__(self):
-		return u'%s %s' % (self.name, self.surname)
+		return u'%s %s' % (self.name, self.last_name)
 
 class Contacts(Model):
 	person = ForeignKey(Person)

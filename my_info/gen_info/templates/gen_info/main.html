@@ -7,33 +7,48 @@
 </head>
 
 <body>
-		<div id="short_info">
-		{{ person.name }}
-		{{ person.surname}}
-		{{ person.birth_date}} 
-		</div>
-		
-		<div id="bio">
-			<table>
-				<tr><th colspan=2 align='left'><b>Short Biography</b></th></tr>
-				{% for key, value in bio_dict.items %}
-				<tr>
-					<td>{{ key }}</td>
-					<td>{{ value }}</td>
+	<div id="container" width="100%">
+	<table width="80%"><tr>
+		<td width="50%"><div id="main_info" align="left" width="100%">
+			<table width="100%">
+				<tr width="100%">
+					<td>Name</td>
+					<td>{{ person.name }}</td>
 				</tr>
-				{% endfor %}
+				<tr>
+					<td>Last name</td>
+					<td>{{ person.last_name}}</td>
+			    </tr>
+			    <tr width="100%">
+					<td>Date of birth</td>
+					<td>{{ person.birth_date}}</td>
+			    </tr>
 			</table>
-		</div>
+		</div></td>
 			
-		<div id="contacts">
-			<table>
-				<tr><th colspan=2 align='left'><b>Contact Information</b></th></tr>
-				{% for key, value in contacts_dict.items %}
-				<tr>
-					<td>{{ key }}</td>
-					<td>{{ value }}</td>
+		<td width="50%"><div id="contacts" align="right" width="100%">
+			<table width="100%">
+				<tr><th colspan=2 align="center" width="100%">Contacts</th></tr>
+				<tr width="100%">
+					<td>Email:</td>
+					<td>{{ contacts.email }}</td>
 				</tr>
-				{% endfor %}
+				<tr width="100%">
+					<td>Jabber:</td>
+					<td>{{ contacts.jabber }}</td>
+			    </tr>
+			    <tr>
+					<td>Skype:</td>
+					<td>{{ contacts.skype }}</td>
+			    </tr>
 			</table>
-		</div>
+		</div></td>
+	</tr>
+	<tr width="100%">
+		<td><textarea cols=50 rows=50 readonly>Bio:{{ person.bio }}</textarea></td>
+		<td><textarea align="left" cols=50" rows=50 readonly>Other contacts:{{ contacts.other }}</textarea></td>
+	</tr>
+	</table>
+	</div>
 </body>
+</html>
