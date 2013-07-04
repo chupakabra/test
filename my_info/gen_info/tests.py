@@ -7,7 +7,7 @@ Replace this with more appropriate tests for your application.
 
 from django.test import TestCase
 from gen_info import *
-from gen_info,models import Person
+from gen_info.models import Person
 
 class PersonViewTests(TestCase):
 	
@@ -25,6 +25,7 @@ class PersonViewTests(TestCase):
 		self.assertQuerysetEqual(
             response.context['person'],
             ['<Person: Name Surname>'],
+        )
         self.assertQuerysetEqual(
             response.context['bio_dict'],
             ['<Person: {Birth place: Some place, Education: Some education, Work experience: Some experience}'],
