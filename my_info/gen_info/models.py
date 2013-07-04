@@ -1,3 +1,11 @@
-from django.db import models
+from django.db.models import *
 
-# Create your models here.
+class Person(Model):
+	name = CharField(max_length=20)
+	surname = CharField(max_length=50)
+	birth_date = DateField()
+	bio = TextField()
+	contacts = TextField()
+	
+	def __unicode__(self):
+		return u'%s %s' % (self.name, self.surname)
