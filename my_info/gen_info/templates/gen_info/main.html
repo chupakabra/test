@@ -3,9 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>My personal data</title>
-        <link rel="stylesheet" href="{{ MEDIA_URL }}css/style.css" type="text/css" media="screen" charset="utf-8" />
+	{% load static %}
+	<link rel="stylesheet" href='{% static "css/style.css" %}' type="text/css" media="screen" />
 </head>
-
 <body>
 	<div id="container" width="100%">
 	<table width="80%"><tr>
@@ -31,22 +31,22 @@
 				<tr><th colspan=2 align="center" width="100%">Contacts</th></tr>
 				<tr width="100%">
 					<td>Email:</td>
-					<td>{{ contacts.email }}</td>
+					<td>{{ person.email }}</td>
 				</tr>
 				<tr width="100%">
 					<td>Jabber:</td>
-					<td>{{ contacts.jabber }}</td>
+					<td>{{ person.jabber }}</td>
 			    </tr>
 			    <tr>
 					<td>Skype:</td>
-					<td>{{ contacts.skype }}</td>
+					<td>{{ person.skype }}</td>
 			    </tr>
 			</table>
 		</div></td>
 	</tr>
 	<tr width="100%">
 		<td><textarea cols=50 rows=50 readonly>Bio:{{ person.bio }}</textarea></td>
-		<td><textarea align="left" cols=50" rows=50 readonly>Other contacts:{{ contacts.other }}</textarea></td>
+		<td><textarea align="left" cols=50" rows=50 readonly>Other contacts:{{ person.other }}</textarea></td>
 	</tr>
 	</table>
 	</div>
