@@ -1,5 +1,5 @@
 from django.test import TestCase
-from person_factory import PersonFactory
+from gen_info.models import Person
 	 
 class PersonViewTests(TestCase):
 	reset_sequences = True
@@ -10,7 +10,11 @@ class PersonViewTests(TestCase):
 
 	"""Context checking"""
 	def test_main(self):
-		person = PersonFactory()
+		person = Person.objects.create(name = "Name", last_name = "Last_Name",\
+		                               birth_date = "1929-03-03", bio = "FDGDSHFG",\
+		                               email = "example@gmail.com", \
+		                               jabber = "example@example.com", \
+		                               skype = "skype", other = "other")
 		response = self.client.get('/')
 		self.assertEqual(response.status_code, 200)
 		self.assertEqual(str(response.context['person']), 'Name Last_Name')
