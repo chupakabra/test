@@ -12,7 +12,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '/home/potwora/git/test/my_info/my_info.db',
+        'NAME': 'my_info.db',
         'USER': '',                     
         'PASSWORD': '',                  
         'HOST': '',                      
