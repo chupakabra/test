@@ -1,2 +1,3 @@
 *.pyc
 *.sqlite3
+my_info.db
