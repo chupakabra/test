@@ -5,7 +5,7 @@ from django.conf.urls import patterns, include, url
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-                       url(r'^ticket#1', include('gen_info.urls',
+                       url(r'^ticket1', include('gen_info.urls',
                            namespace="gen_info")),
-                       url(r'^ticket#3', include('http_request_storage.urls',
+                       url(r'^ticket3', include('http_request_storage.urls',
                                                  namespace="htpp_requests")))
