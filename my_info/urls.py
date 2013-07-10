@@ -8,4 +8,4 @@ urlpatterns = patterns('',
                        url(r'^ticket1', include('gen_info.urls',
                            namespace="gen_info")),
                        url(r'^ticket3', include('http_request_storage.urls',
-                                                 namespace="http_requests")))
+                                                namespace="http_requests")))
