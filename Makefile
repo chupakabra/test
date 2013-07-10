@@ -7,8 +7,9 @@ run:
 	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=my_info.settings $(MANAGE) runserver
 
 syncdb:
-    PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=my_info.settings $(MANAGE) syncdb --noinput
-    PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=my_info.settings $(MANAGE) loaddata mydata.json
+	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=my_info.settings $(MANAGE) syncdb --noinput
+	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=my_info.settings $(MANAGE) loaddata mydata.json
+	migrate
 
 migrate:
 	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=my_info.settings $(MANAGE) migrate
