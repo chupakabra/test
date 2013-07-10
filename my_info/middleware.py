@@ -3,6 +3,6 @@ from datetime import datetime
 	
 class RequestStorageMiddleware(object):
 	def process_request(self, request):
-		cur_request = HttpRequestStorage.objects.create(date=datetime.now(),\
+		return HttpRequestStorage.objects.create(date=datetime.now(),\
 		              path = request.path[:100])
 		
