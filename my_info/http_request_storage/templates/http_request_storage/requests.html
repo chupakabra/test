@@ -11,14 +11,14 @@
 		<table>
 			<tr>
 				<th>Date of the request</th>
-				<th>Path info</th>
+				<th>Path</th>
 			</tr>
-			{{% for request in first_requests%}}
+			{% for httprequeststorage in first_requests %}
 			<tr>
-				<td>{{ request.date }}</td>
-				<td>{{ request.path_info }}</td>
+				<td>{{ httprequeststorage.date }}</td>
+				<td>{{ httprequeststorage.path }}</td>
 			</tr>
-			{{% endfor %}}
+			{% endfor %}
 		</table>
 	</div>
 </body>

@@ -12,7 +12,7 @@ class Migration(SchemaMigration):
         db.create_table('http_request_storage_httprequeststorage', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('date', self.gf('django.db.models.fields.DateTimeField')()),
-            ('path_info', self.gf('django.db.models.fields.CharField')(max_length=100)),
+            ('path', self.gf('django.db.models.fields.CharField')(max_length=100)),
         ))
         db.send_create_signal('http_request_storage', ['HttpRequestStorage'])
 
@@ -27,7 +27,7 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'HttpRequestStorage'},
             'date': ('django.db.models.fields.DateTimeField', [], {}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'path_info': ('django.db.models.fields.CharField', [], {'max_length': '100'})
+            'path': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         }
     }
 
