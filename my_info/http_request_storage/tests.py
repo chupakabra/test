@@ -1,9 +1,8 @@
 from django.test import TestCase
 from django.core.urlresolvers import reverse
 from http_request_storage.models import HttpRequestStorage
-from http_request_storage.views import requests
 from django.test.utils import override_settings
-from django.core.urlresolvers import reverse
+from gen_info import views, urls
 
 
 class RequestStorageMiddlewareTests(TestCase):
@@ -16,10 +15,9 @@ class RequestStorageMiddlewareTests(TestCase):
         cur_request = HttpRequestStorage.objects.get(
             path=reverse('http_requests:requests'))
         self.assertNotEqual(cur_request, None)
-        response = self.client.get(reverse('http_requests:main'))
-        self.assertEqual(response.status_code, 200)
+        response = self.client.get(reverse('gen_info:main'))
         self.assertNotEqual(HttpRequestStorage.objects.get(
-                            path=reverse('http_requests:main')), None)
+                            path=reverse('gen_info:main')), None)
 
     @override_settings(
         MIDDLEWARE_CLASSES=(
@@ -35,3 +33,19 @@ class RequestStorageMiddlewareTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertQuerysetEqual(HttpRequestStorage.objects.all(), [])
         self.assertQuerysetEqual(response.context['first_requests'], [])
+
+
+class HttpRequestStorageViewTests(TestCase):
+
+    """def test_main_redirection(self):
+        \"""Check the redirection from the main page to requests page\"""
+        response = self.client.get(reverse('gen_info:main'))
+        self.assertRedirects(response, reverse('http_requests:requests'))"""
+
+    def test_requests(self):
+        """Check the right opening and content of the requests page"""
+        response = self.client.get(reverse('gen_info:main'))
+        response = self.client.get(reverse('http_requests:requests'))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, reverse('gen_info:main'))
+        self.assertContains(response, reverse('http_requests:requests'))

@@ -1,6 +1,6 @@
 from django.test import TestCase
-from django.core.urlresolvers import reverse
 from gen_info.models import Person
+from django.core.urlresolvers import reverse
 
 
 class PersonViewTests(TestCase):
