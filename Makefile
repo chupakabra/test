@@ -3,6 +3,7 @@ MANAGE=./my_info/manage.py
 test:
 	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=my_info.settings $(MANAGE) test gen_info
 	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=my_info.settings $(MANAGE) test http_request_storage
+	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=my_info.settings $(MANAGE) test add_settings
 	
 run:
 	PYTHONPATH=`pwd` DJANGO_SETTINGS_MODULE=my_info.settings $(MANAGE) runserver
