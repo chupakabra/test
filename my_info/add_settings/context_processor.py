@@ -1,7 +1,7 @@
 from django.conf import settings
 
 
-def settings(request):
+def settings_processor(request):
     keys = []
     values = []
     for item in dir(settings):

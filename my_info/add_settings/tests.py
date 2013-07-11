@@ -11,7 +11,8 @@ class ContextProcessorSettingsTest(TestCase):
         in settings"""
         response = self.client.get(reverse('add_settings:settings'))
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.context['DEBUG_PROPAGATE_EXCEPTIONS'], False)
+        self.assertNotEqual(response.context['settings'], {})
+        self.assertContains(response, 'STATICFILES_FINDERS')
 
     @override_settings(
 	    TEMPLATE_CONTEXT_PROCESSORS=(
@@ -27,4 +28,6 @@ class ContextProcessorSettingsTest(TestCase):
 	    in settings"""
 	    response = self.client.get(reverse('add_settings:settings'))
 	    self.assertEqual(response.status_code, 200)
-	    self.assertNotEqual(response.context['DEBUG_PROPAGATE_EXCEPTIONS'], False)
+	    self.assertEqual(response.context['settings'], {})
+	    self.assertNotContains(response, 'STATICFILES_FINDERS')
+
