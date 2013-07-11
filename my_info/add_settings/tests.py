@@ -9,7 +9,7 @@ class ContextProcessorSettingsTest(TestCase):
     def test_template_context_processor_on(self):
         """Check the case when context_processor.settings is specified
         in settings"""
-        response = self.client.get(reverse('http_requests:main'))
+        response = self.client.get(reverse('add_settings:settings'))
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context['DEBUG_PROPAGATE_EXCEPTIONS'], False)
 
@@ -25,6 +25,6 @@ class ContextProcessorSettingsTest(TestCase):
     def test_template_context_processor_off(self):
 	    """Check the case when context_processor.settings is not specified
 	    in settings"""
-	    response = self.client.get(reverse('http_requests:main'))
+	    response = self.client.get(reverse('add_settings:settings'))
 	    self.assertEqual(response.status_code, 200)
 	    self.assertNotEqual(response.context['DEBUG_PROPAGATE_EXCEPTIONS'], False)

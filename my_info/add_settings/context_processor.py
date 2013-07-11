@@ -1,9 +1,7 @@
-from django.shortcuts import render
-from django.template import RequestContext
 from django.conf import settings
 
 
-def settings_processor(request):
+def settings(request):
     keys = []
     values = []
     for item in dir(settings):
@@ -13,8 +11,3 @@ def settings_processor(request):
 	
     context_extras = dict(map(None,keys,values))
     return {'settings':context_extras}
-
-def main(request):
-	return render(request, 'add_settings/django_settings.html', 
-	   context_instance=RequestContext(request, [settings_processor]))
-
