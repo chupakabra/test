@@ -98,11 +98,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.media',
     'django.core.context_processors.static',
     'django.core.context_processors.tz',
-<<<<<<< HEAD
     'django.contrib.messages.context_processors.messages',
-=======
-    'django.contrib.messages.context_processors.messages'
->>>>>>> t3_middleware
+    'add_settings.context_processor.settings_processor'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -137,7 +134,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'south',
     'gen_info',
-    'http_request_storage'
+    'http_request_storage',
+    'add_settings'
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
