@@ -134,7 +134,8 @@ INSTALLED_APPS = (
     'south',
     'gen_info',
     'http_request_storage',
-    'add_settings'
+    'add_settings',
+    'form_page'
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:

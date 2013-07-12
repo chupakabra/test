@@ -11,4 +11,6 @@ urlpatterns = patterns('',
                        url(r'^requests', include('http_request_storage.urls',
                                                  namespace='http_requests')),
                        url(r'^settings', include('add_settings.urls',
-                                                 namespace='add_settings')))
+                                                 namespace='add_settings')),
+                       url(r'^edit', include('form_page.urls',
+                                                 namespace='form')))                                                 

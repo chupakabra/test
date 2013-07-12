@@ -45,9 +45,21 @@
 		</div></td>
 	</tr>
 	<tr width="100%">
-		<td><textarea cols=50 rows=50 readonly>Bio:{{ person.bio }}</textarea></td>
-		<td><textarea align="left" cols=50" rows=50 readonly>Other contacts:{{ person.other }}</textarea></td>
+		
+		<td id="photo" width="50%" height="100%"><table align="top">
+			<tr width="100%"><td>Photo:</td></tr>
+			<tr width="100%">
+				<td><img width="293px" height="388px" border="2px">{{ person.photo }}</></td>
+			</tr>
+		</table></td>
+		
+		<td id="bio" width="50%"><table>
+			<tr><td><textarea cols=50 rows=20 readonly>Bio:{{ person.bio }}</textarea></td></tr>
+		    <tr><td><textarea cols=50" rows=10 readonly>Other contacts:{{ person.other }}</textarea></td></tr>
+		</table></td>
+		
 	</tr>
+	
 	<tr>
 		<td><a href="{% url http_requests:requests %}">requests</a></td>
 	</tr>
