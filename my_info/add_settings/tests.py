@@ -11,7 +11,7 @@ class ContextProcessorSettingsTest(TestCase):
         in settings"""
         response = self.client.get(reverse('add_settings:settings'))
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'settings')
+        self.assertEqual(response.context['settings'], settings)
 
     @override_settings(
            TEMPLATE_CONTEXT_PROCESSORS=(
@@ -27,4 +27,4 @@ class ContextProcessorSettingsTest(TestCase):
         in settings"""
         response = self.client.get(reverse('add_settings:settings'))
         self.assertEqual(response.status_code, 200)
-        self.assertNotIn('settings', response)
+        self.assertNotContains(response, 'settings')
