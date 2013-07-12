@@ -4,7 +4,6 @@ from django.core.urlresolvers import reverse
 
 
 class PersonViewTests(TestCase):
-    reset_sequences = True
 
     def test_main_view_no_person_info(self):
         """If no information about person or Error 404 should be displayed"""
