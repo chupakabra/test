@@ -11,10 +11,9 @@ class ContextProcessorSettingsTest(TestCase):
         in settings"""
         response = self.client.get(reverse('add_settings:settings'))
         self.assertEqual(response.status_code, 200)
-        self.assertNotEqual(response.context['settings'], {})
-        self.assertContains(response, 'STATICFILES_FINDERS')
+        self.assertEqual(response.context['settings'], settings)
 
-    """@override_settings(
+    @override_settings(
            TEMPLATE_CONTEXT_PROCESSORS=(
                'django.contrib.auth.context_processors.auth',
                'django.core.context_processors.debug',
@@ -23,10 +22,9 @@ class ContextProcessorSettingsTest(TestCase):
                'django.core.context_processors.static',
                'django.core.context_processors.tz',
                'django.contrib.messages.context_processors.messages'))
-     def test_template_context_processor_off(self):
-        \"""Check the case when context_processor.settings is not specified
-        in settings\"""
+    def test_template_context_processor_off(self):
+        """Check the case when context_processor.settings is not specified
+        in settings"""
         response = self.client.get(reverse('add_settings:settings'))
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.context['settings'], {})
-        self.assertNotContains(response, 'STATICFILES_FINDERS')"""
+        self.assertNotContains(response, 'settings')
