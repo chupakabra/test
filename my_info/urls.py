@@ -13,4 +13,4 @@ urlpatterns = patterns('',
                        url(r'^settings', include('add_settings.urls',
                                                  namespace='add_settings')),
                        url(r'^edit', include('form_page.urls',
-                                                 namespace='form')))                                                 
+                                                 namespace='edit_form')))                                                 

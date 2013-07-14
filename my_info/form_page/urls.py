@@ -3,4 +3,4 @@ from form_page import views
 
 
 urlpatterns = patterns('',
-                       url(r'^$', views.form, name='form'))
+                       url(r'^$', views.init, name='person_form'))

@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+	{% load static %}
+	<link rel="stylesheet" href='{% static "css/style.css" %}' type="text/css" media="screen" />
+</head>
+<body>
+   {% block top_addition %} {% endblock%}
+	<div id="container" width="100%">
+	<table width="80%"><tr>
+		<td width="50%"><div id="main_info" align="left" width="100%">
+			{% block main_info%}{% endblock %}
+		</div></td>
+			
+		<td width="50%"><div id="contacts" align="right" width="100%">
+			{% block contacts %} {% endblock %}
+		</div></td>
+	</tr>
+	
+	<tr width="100%">
+		
+		<td id="photo" width="50%" height="100%">
+			{% block photo %}{% endblock %}
+		</td>
+		
+		<td id="bio" width="50%">
+			{% block bio %}{% endblock %} 
+		</td>
+		
+	</tr><br>
+	
+	{% block bottom_edition %}{% endblock %}
+	
+	<tr>
+		<td><a href="{% url http_requests:requests %}">requests</a></td>
+	</tr>
+	</table>
+	</div>
+</body>
+</html>
