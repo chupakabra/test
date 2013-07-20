@@ -52,8 +52,10 @@
 		<td id="photo" width="50%" height="100%"><table width="70%" height="100%">
 			<tr width="100%" height="5%"><td>Photo:</td></tr>
 			<tr width="100%" height="95%">
-				<td width="100%" height="100%" style="border: medium solid;">
-					<img src="/home/penguin/git/test/my_info/images/pic with a towel.png"></img>
+				<td width="100%" height="100%" style="border: medium solid; background:url('{{ person.photo.url }}'); ">
+					{% if person.photo_image %}
+						<img src="{{ person.photo_image }}" />
+					{% endif %}
 				</td>
 			</tr>
 		</table></td>
@@ -72,7 +74,8 @@
 		<td><a href="{% url http_requests:requests %}">requests</a></td>
 	</tr>
 	</table>
-	<img src="{{ MEDIA_URL }}images/pic_with_a_towel.png"/>
+	{% load staticfiles %}
+	<img src='{% static "person.photo.url" %}'/>
 	</div>
 </body>
 </html>

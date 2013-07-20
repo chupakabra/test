@@ -1,13 +1,13 @@
 from django.db.models import *
-from PIL import Image
-from settings import STATIC_URL
+from settings import MEDIA_URL
+from django.contrib import admin
 
 
 class Person(Model):
     name = CharField(max_length=20)
     last_name = CharField(max_length=50)
     birth_date = DateField()
-    photo = ImageField(upload_to="images/", blank=True, null=True)
+    photo = ImageField(upload_to="images", blank=True, null=True)
     bio = TextField()
     email = EmailField(max_length=75)
     jabber = EmailField(max_length=75)
@@ -15,7 +15,16 @@ class Person(Model):
     other = TextField(blank=True)
     
     def photo_image(self):
-        return (STATIC_URL + self.photo.name) if self.photo else None
-
+        return (MEDIA_URL + self.photo.name) if self.photo else None
+        
+    def image_(self):
+        return '<a href="/static/{0}"><img src="/static/{0}"></a>'.format(self.thumbnail)
+	
+	image_.allow_tags = True
+    
     def __unicode__(self):
         return u'%s %s' % (self.name, self.last_name)
+
+        
+class AdminName(admin.ModelAdmin):
+    list_display = ('image_',)        

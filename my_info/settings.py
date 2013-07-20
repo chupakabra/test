@@ -1,5 +1,8 @@
 # Django settings for my_info project.
 
+import os.path
+
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -49,18 +52,21 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = '/media/'
+MEDIA_ROOT = ''
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = '/media/'
+MEDIA_URL = 'http://localhost:8000/static/'
+
+if DEBUG:
+    MEDIA_ROOT = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'static/')
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = '/home/adminuser/git/test/my_info/sitestatic'
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -136,9 +142,9 @@ INSTALLED_APPS = (
     'gen_info',
     'http_request_storage',
     'add_settings',
-    'form_page'
+    'form_page',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )

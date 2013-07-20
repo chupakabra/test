@@ -7,8 +7,8 @@ from django.http import HttpResponseRedirect
 def init(request):
 	person = get_object_or_404(Person, pk=1)
 	init_person_form = PersonForm(instance=person)
-	photo_path = person.photo_image()
-	context = {'person_form': init_person_form, 'photo_path': photo_path}
+	#photo_path = person.photo_image()
+	context = {'person_form': init_person_form, 'photo_path': person.photo}
 	return render(request, 'form_page/form.html', context)
 	    
 def edit(request, template_name = 'form_page/form.html'):
